@@ -15,17 +15,21 @@ class Cart:
         self.cart = cart
     
     def add(self, product, quantity=1, override_quantity=False):
+
         product_id = str(product.id)
+        
+        
         if product_id not in self.cart:
+            
             self.cart[product_id] = {
                 'quantity': 0,
                 'price': str(product.price)
             }
         
         if override_quantity:
-            self.cart[product.id]['quantity'] = quantity
+            self.cart[product_id]['quantity'] = quantity
         else:
-            self.cart[product.id]['quantity'] += quantity
+            self.cart[product_id]['quantity'] += quantity
         
         self.save()
     
@@ -55,7 +59,7 @@ class Cart:
     
 
     def get_total_price(self):
-        return sum(Decimal(item['price']*item['quantity']) for item in self.cart.values)
+        return sum(Decimal(item['price']*item['quantity']) for item in self.cart.values())
     
     
     def clear(self):
