@@ -4,7 +4,7 @@ from cart.cart import Cart
 from .forms import OrderCreateForm
 from .models import OrderItem
 
-def create_order(request):
+def order_create(request):
     cart = Cart(request)
     if request.method == 'POST':
         form = OrderCreateForm(request.POST)
