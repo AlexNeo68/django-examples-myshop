@@ -2,7 +2,8 @@ import stripe
 from django.conf import settings
 from django.http import HttpResponse, HttpRequest
 from django.views.decorators.csrf import csrf_exempt
-from payment.views import payment_completed
+from payment.tasks import payment_completed
+
 
 from orders.models import Order
 
