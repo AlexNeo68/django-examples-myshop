@@ -5,6 +5,7 @@ from django.template.loader import render_to_string
 from django.urls import reverse
 
 from cart.cart import Cart
+from shop.recommender import Recommender
 from .tasks import order_created
 from .forms import OrderCreateForm
 from .models import Order, OrderItem
@@ -30,6 +31,10 @@ def order_create(request):
                                          quantity=item['quantity'],
                                          )
             cart.clear()
+
+            r = Recommender()
+            cart_products = [item['product'] for item in cart]
+            r.products_bought(cart_products)
 
             order_created.delay(order.id)
 

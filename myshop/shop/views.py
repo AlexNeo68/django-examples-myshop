@@ -6,12 +6,16 @@ from .recommender import Recommender
 from .models import Category, Product
 
 def product_list(request, category_slug=None):
-    category = None
+    
     categories = Category.objects.all()
-    products = Product.objects.filter(available=True)
+    
+
     if category_slug:
         category = Category.objects.filter(slug=category_slug)
-        products = products.filter(category=category)
+        products = Product.objects.filter(available=True, category=category)
+    else:
+        products = Product.objects.filter(available=True)
+        category = None
 
     context = {
         'category': category,
