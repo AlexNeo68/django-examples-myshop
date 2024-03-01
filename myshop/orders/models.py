@@ -20,7 +20,7 @@ class Order(models.Model):
     updated = models.DateTimeField(_('updated'), auto_now=True)
     paid = models.BooleanField(_('paid'), default=False)
     stripe_id = models.CharField(_('stripe_id'), max_length=250, blank=True)
-    coupon = models.ForeignKey(_('coupon'), Coupon, on_delete=models.SET_NULL, related_name='orders', null=True, blank=True)
+    coupon = models.ForeignKey(Coupon, on_delete=models.SET_NULL, related_name='orders', null=True, blank=True)
     discount = models.IntegerField(_('discount'), default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
 
     class Meta:
