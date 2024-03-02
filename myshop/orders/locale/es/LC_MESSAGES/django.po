@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-03-01 10:08+0300\n"
+"POT-Creation-Date: 2024-03-02 08:56+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,10 +59,6 @@ msgstr ""
 msgid "stripe_id"
 msgstr ""
 
-#: orders/models.py:23
-msgid "coupon"
-msgstr ""
-
 #: orders/models.py:24
 msgid "discount"
 msgstr ""
@@ -90,4 +86,8 @@ msgstr ""
 
 #: orders/templates/orders/order/create.html:35
 msgid "Place Order"
+msgstr ""
+
+#: orders/urls.py:9
+msgid "create/"
 msgstr ""
