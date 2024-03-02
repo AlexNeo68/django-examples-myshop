@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 
     # 3rd
     "rosetta",
+    "parler",
 ]
 
 MIDDLEWARE = [
@@ -162,3 +163,16 @@ STRIPE_WEBHOOK_SECRET = 'whsec_3c95b89cd835e0f08e58b02b4db990b1ea8d357160a67f7f5
 REDIS_HOST = 'localhost'
 REDIS_PORT = 6379
 REDIS_DB = 1
+
+
+# django-parler settings
+PARLER_LANGUAGES = {
+    None: (
+        {'code': 'en'},
+        {'code': 'es'},
+    ),
+    'default': {
+        'fallback': 'en',
+        'hide_untranslated': False,
+    }
+}
