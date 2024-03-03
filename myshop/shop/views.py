@@ -11,7 +11,10 @@ def product_list(request, category_slug=None):
     
 
     if category_slug:
-        category = Category.objects.filter(slug=category_slug)
+        language = request.LANGUAGE_CODE
+
+        category = get_object_or_404(Category, translations__language_code=language, translations__slug=category_slug)
+
         products = Product.objects.filter(available=True, category=category)
     else:
         products = Product.objects.filter(available=True)
@@ -26,7 +29,11 @@ def product_list(request, category_slug=None):
     return render(request, 'shop/product/list.html', context)
 
 def product_detail(request, id, slug):
-    product = get_object_or_404(Product, id=id, slug=slug, available=True)
+    language = request.LANGUAGE_CODE
+
+
+    product = get_object_or_404(Product, id=id,
+                                 translations__language_code=language, translations__slug=slug, available=True)
     cart_product_form = CartAddProductForm()
     r = Recommender()
     recommended_products = r.suggest_products_for([product], 4)
